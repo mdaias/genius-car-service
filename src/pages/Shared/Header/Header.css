@@ -1,17 +1,5 @@
 nav{
     width: auto;
-    height: 10vh;
-    background-color: #282c34;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-nav a{
-    margin: 1rem;
-    font-size: 1.2rem;
-}
-nav a:hover{
-    color: rgb(245, 157, 50);
 }
 nav .active{
     color: rgb(255, 0, 0);

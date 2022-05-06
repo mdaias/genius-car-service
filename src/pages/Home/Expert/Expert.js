@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import "./Expert.css"
 
 const Expert = ({ expert }) => {
@@ -7,7 +6,7 @@ const Expert = ({ expert }) => {
     console.log(expert)
 
     return (
-        <div className='flex flex-col justify-center items-center border-2 p-2 mx-5'>
+        <div className='flex flex-col justify-center items-center border-2 p-2 md:mx-5'>
 
             <img src={img} alt="" />
 
@@ -15,7 +14,7 @@ const Expert = ({ expert }) => {
 
             <p className='text-xl mt-1 font-semibold text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim corrupti aut nesciunt soluta odit minima.</p>
 
-            <Link className='mt-5' to=''>Hire Me</Link>
+            <button className='rounded-full w-full bg-blue-700 text-white p-2 mt-2 font-semibold hover:bg-pink-500'>Hire Me</button>
 
         </div>
     );

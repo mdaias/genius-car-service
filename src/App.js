@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-// import Home from './pages/Home/Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import About from './pages/About/About';
 import Login from './pages/Login/Login';
 import Registration from './pages/Registration/Registration';
@@ -22,7 +22,7 @@ function App() {
             <Route path='/service/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
 
             <Route path='/about' element={<About></About>}></Route>
-            
+
             <Route path='/login' element={<Login></Login>}></Route>
             <Route path='/registration' element={<Registration></Registration>}></Route>
         </Routes>
