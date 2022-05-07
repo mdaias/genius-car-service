@@ -1,0 +1,29 @@
+.register-form{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
+    margin-top: 3rem;
+    padding: 15px;
+    border: 4px solid rgb(86, 188, 228);
+}
+
+.register-form input{
+    display: block;
+    width: 100%;
+    border: 1px solid burlywood;
+    padding: 15px;
+    margin: 15px 5px;
+    text-align: center;
+}
+
+
+/* mobile responsive */
+
+@media only screen and (max-width: 768px){
+    .register-form{
+        width: 100%;
+    }
+    .register-form input{
+        padding: 10px;
+    }
+}
