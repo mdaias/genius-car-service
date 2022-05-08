@@ -3,7 +3,6 @@ import "./Expert.css"
 
 const Expert = ({ expert }) => {
     const { name, img } = expert;
-    console.log(expert)
 
     return (
         <div className='flex flex-col justify-center items-center border-2 p-2 md:mx-5'>

@@ -8,24 +8,32 @@ import Header from './pages/Shared/Header/Header';
 import Home from './pages/Home/Home/Home';
 import Services from './pages/Home/Services/Services';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
+import Checkout from './pages/Checkout/Checkout';
+import RequireAuth from './pages/Login/RequireAuth/RequireAuth';
 
 function App() {
   return (
     <div className="App">
 
       <Header></Header>
-        <Routes>
-            <Route path='/' element={<Home></Home>}></Route>
-            <Route path='/home' element={<Home></Home>}></Route>
-            <Route path='/services' element={<Services></Services>}></Route>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/services' element={<Services></Services>}></Route>
 
-            <Route path='/service/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
+        <Route path='/checkout' element={
+          <RequireAuth>
+            <Checkout></Checkout>
+          </RequireAuth>}>
+        </Route>             
 
-            <Route path='/about' element={<About></About>}></Route>
+        <Route path='/service/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
 
-            <Route path='/login' element={<Login></Login>}></Route>
-            <Route path='/registration' element={<Registration></Registration>}></Route>
-        </Routes>
+        <Route path='/about' element={<About></About>}></Route>
+
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/registration' element={<Registration></Registration>}></Route>
+      </Routes>
     </div>
   );
 }
