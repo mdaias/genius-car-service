@@ -8,7 +8,7 @@
     background-color: blanchedalmond;
 }
 
-.register-form input{
+.register-form input:not([type=checkbox]){
     display: block;
     width: 100%;
     border: 1px solid burlywood;

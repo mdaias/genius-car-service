@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import "./Registration.css";
@@ -7,6 +7,8 @@ import SocialLogin from '../Login/SocialLogin/SocialLogin';
 
 const Registration = () => {
 
+    const [agree, setAgree] = useState(false);
+
     const navigate = useNavigate();
 
     const [
@@ -14,19 +16,19 @@ const Registration = () => {
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-      
-      if(loading){
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
 
-      }
+    if (loading) {
 
-      if(error){
+    }
 
-      }
+    if (error) {
 
-      if(user){
-          navigate('/')
-      }
+    }
+
+    if (user) {
+        navigate('/')
+    }
 
     const handleRegister = event => {
         event.preventDefault();
@@ -36,8 +38,9 @@ const Registration = () => {
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
 
-        console.log(name,confirmPassword)
-        createUserWithEmailAndPassword(email,password)
+        if (agree) {
+            createUserWithEmailAndPassword(email, password)
+        }
     }
 
 
@@ -47,14 +50,20 @@ const Registration = () => {
             <h1 className=' text-center text-emerald-500'>Registration</h1>
 
             <form onSubmit={handleRegister} className=' mt-10'>
-                <input type="text" name='name' placeholder='Enter your full-name' />
+                <input type="text" name='name' placeholder='Enter your full-name' required />
 
-                <input type="email" name="email" placeholder='Enter a valid email address' id="" />
+                <input type="email" name="email" placeholder='Enter a valid email address' required />
 
-                <input type="password" name="password" placeholder='Password' id="" />
-                <input type="password" name="confirmPassword" placeholder='Confirm Password' id="" />
+                <input type="password" name="password" placeholder='Password' required />
+                <input type="password" name="confirmPassword" placeholder='Confirm Password' required />
 
-                <input className='w-50 hover:bg-orange-500 font-bold mx-auto text-white bg-blue-500' type="submit" value="Registration" />
+                <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                <label
+                    className={`ml-2 ${agree ? 'text-blue-700' : 'text-red-500'}`}
+                    htmlFor="terms">Accept Genius Car Terms and Conditions
+                </label>
+
+                <input disabled={!agree} className='w-50 hover:bg-orange-500 font-bold mx-auto text-white bg-blue-500' type="submit" value="Registration" />
             </form>
 
             <p className='text-center'>Already have an account?<span className='cursor-pointer font-bold text-orange-600' onClick={() => navigate('/login')}> Login</span></p>

@@ -1,22 +1,30 @@
-input{
-    border-radius: 30px;
-}
-.login-page{
+.login-form{
     width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
     margin-top: 3rem;
-    margin-bottom: 2rem;
+    padding: 15px;
+    border: 4px solid rgb(86, 188, 228);
+    background-color: blanchedalmond;
+}
+
+.login-form input{
+    display: block;
+    width: 100%;
+    border: 1px solid burlywood;
+    padding: 15px;
+    margin: 15px 5px;
+    text-align: center;
 }
 
 
+/* mobile responsive */
 
-/* Mobile responsive */
-
-@media only screen and (max-width: 768px) {
-    body{
-        margin: auto;
+@media only screen and (max-width: 768px){
+    .login-form{
+        width: 100%;
     }
-    .login-page {
-      width: 100%;
-      margin-top: 1rem;
+    .register-form input{
+        padding: 10px;
     }
-  }
+}

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+// import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -24,8 +24,13 @@ const Login = () => {
 
     }
 
-    if (error) {
+    let errorElement;
 
+    if (error) {
+        errorElement =
+            <div>
+                <p className=' text-red-500 text-center'>Error: {error?.message}</p>
+            </div>
     }
 
     if (user) {
@@ -36,7 +41,7 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
-    const handleSubmit = event => {
+    const handleLogin = event => {
         event.preventDefault();
 
         const email = emailRef.current.value;
@@ -46,25 +51,18 @@ const Login = () => {
     }
 
     return (
-        <div className='login-page bg-red-100 mx-auto container rounded-lg border-4 p-2'>
+        <div className='login-form container bg-zinc-50 my-3'>
             <h1 className='text-center text-blue-500 font-bold'>LogIn</h1>
 
-            <Form onSubmit={handleSubmit} className='mx-5 mb-3'>
+            <form onSubmit={handleLogin} className=' mt-10'>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label className='font-semibold fs-4 text-sky-500'>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                </Form.Group>
+                <input type="email" name="email" ref={emailRef} placeholder='Enter a valid email address' required />
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label className='font-semibold fs-4 text-sky-500'>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-                </Form.Group>
-
-                <Button className='mx-auto d-block mt-6 w-50 text-white' variant="info" type="submit">
-                    Login
-                </Button>
-            </Form>
+                <input type="password" name="password" ref={passwordRef} placeholder='Password' required />
+ 
+                <input className='w-50 hover:bg-orange-500 font-bold mx-auto text-white bg-blue-500 rounded-lg' type="submit" value="Login" />
+            </form>
+                {errorElement}
             <p className='text-center'>New to genius Car Service? <span className='cursor-pointer text-orange-600 font-bold' onClick={() => navigate('/registration')}>Registration</span></p>
 
             <SocialLogin></SocialLogin>
