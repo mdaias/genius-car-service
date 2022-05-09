@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import "./Login.css";
+import SocialLogin from './SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -60,11 +61,13 @@ const Login = () => {
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button className='mt-2 w-28 font-extrabold text-2xl' variant="primary" type="submit">
+                <Button className='mx-auto d-block mt-6 w-50 text-white' variant="info" type="submit">
                     Login
                 </Button>
             </Form>
-            <p className='text-center'>New to genius Car Service? <span className='cursor-pointer text-orange-600' onClick={() => navigate('/registration')}>Registration</span></p>
+            <p className='text-center'>New to genius Car Service? <span className='cursor-pointer text-orange-600 font-bold' onClick={() => navigate('/registration')}>Registration</span></p>
+
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
