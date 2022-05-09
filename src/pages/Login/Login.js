@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-// import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import "./Login.css";
 import SocialLogin from './SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -20,7 +21,9 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    if (loading) {
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (loading || sending) {
 
     }
 
@@ -50,6 +53,17 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else {
+            toast('please enter your email address');
+        }
+    }
+
     return (
         <div className='login-form container bg-zinc-50 my-3'>
             <h1 className='text-center text-blue-500 font-bold'>LogIn</h1>
@@ -59,11 +73,15 @@ const Login = () => {
                 <input type="email" name="email" ref={emailRef} placeholder='Enter a valid email address' required />
 
                 <input type="password" name="password" ref={passwordRef} placeholder='Password' required />
- 
+
                 <input className='w-50 hover:bg-orange-500 font-bold mx-auto text-white bg-blue-500 rounded-lg' type="submit" value="Login" />
             </form>
-                {errorElement}
+            {errorElement}
             <p className='text-center'>New to genius Car Service? <span className='cursor-pointer text-orange-600 font-bold' onClick={() => navigate('/registration')}>Registration</span></p>
+
+            <p className='text-center'>Forget Password? <button className=' text-orange-600 font-bold' onClick={resetPassword}>Reset Password</button> </p>
+
+            <ToastContainer />
 
             <SocialLogin></SocialLogin>
         </div>
