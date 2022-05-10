@@ -10,6 +10,8 @@ import Services from './pages/Home/Services/Services';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Checkout from './pages/Checkout/Checkout';
 import RequireAuth from './pages/Login/RequireAuth/RequireAuth';
+import NotFound from './pages/Shared/NotFound/NotFound';
+import Footer from './pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -33,7 +35,10 @@ function App() {
 
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
+
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
