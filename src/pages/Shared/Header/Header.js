@@ -16,12 +16,11 @@ const Header = () => {
     return (
 
         <nav className=' sticky w-auto top-0 flex md:justify-between justify-between  items-center md:bg-neutral-100 md:h-20 h-10'>
+
             <div className='flex justify-start items-center'>
                 <NavLink className='text-white md:text-lg text-xs font-bold md:mr-2 mr-1 no-underline font-serif p-1' to='/home'>Home</NavLink>
+
                 <NavLink className='text-white md:text-lg text-xs font-bold md:mr-2 mr-1 no-underline font-serif p-1' to='/services'>Services</NavLink>
-                <NavLink className='text-white md:text-lg text-xs font-bold md:mr-2 mr-1 no-underline font-serif p-1' to='/checkout'>Hire Expert</NavLink>
-            </div>
-            <div className='flex justify-start items-center'>
 
                 {
                     user && <>
@@ -30,6 +29,12 @@ const Header = () => {
                         <NavLink className='text-white md:text-lg text-xs md:mr-2 mr-1 ml-1 md:ml-2 no-underline font-bold font-serif p-1' to='manage'>Manage</NavLink>
                     </>
                 }
+
+            </div>
+
+            <div className='flex justify-start items-center'>
+
+                <NavLink className='text-white md:text-lg text-xs font-bold md:mr-2 mr-1 no-underline font-serif p-1' to='/Orders'>Orders</NavLink>
 
                 <NavLink className='text-white md:text-lg text-xs md:mr-2 mr-1 md:ml-2 no-underline font-bold font-serif p-1' to='/about'>About</NavLink>
 

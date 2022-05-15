@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import "./Login.css";
 import SocialLogin from './SocialLogin/SocialLogin';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -81,7 +81,6 @@ const Login = () => {
 
             <p className='text-center'>Forget Password? <button className=' text-orange-600 font-bold' onClick={resetPassword}>Reset Password</button> </p>
 
-            <ToastContainer />
 
             <SocialLogin></SocialLogin>
         </div>
